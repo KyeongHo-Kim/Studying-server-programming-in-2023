@@ -172,12 +172,11 @@ tolen : *to 포인터가 가르키는 구조체의 크기 즉 sockaddr_in타입�
     #pragma comment (lib,"ws2_32.lib")  
     #include "SocketAddress.h"  
     #include "UDPSocket.h"  
-
+    
     void show_error(const char*);
 
     int main()
-    {
-        
+    {  
         WSADATA wsa;
         if (WSAStartup(MAKEWORD(2, 2), &wsa)) 
         {
@@ -194,11 +193,8 @@ tolen : *to 포인터가 가르키는 구조체의 크기 즉 sockaddr_in타입�
         }
 
         SocketAddressPtr sockaddrptr = make_shared<SocketAddress>(INADDR_ANY, 8000);    // SocketAddress객체 생성
-    
         
         UDPSocketPtr udp_socket_ptr = make_shared<UDPSocket>(gate_socket);              // UDPSocket객체 생성
-
-
         
         if (udp_socket_ptr->Bind(*sockaddrptr)) // bind() ip주소와 prot번호를 넘김
         {
@@ -206,7 +202,6 @@ tolen : *to 포인터가 가르키는 구조체의 크기 즉 sockaddr_in타입�
             return -1;
         }
         
-    
         char message_buffer[80];    // 수신받은 데이터가 저장될 공간
         SocketAddress send_info;    // 송신자의 정보가 저장될 공간
         while (true)
