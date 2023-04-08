@@ -168,8 +168,6 @@ flags : 옵션, 일반적으로 0 사용
             return -1;
         }
 
-        // accept : session_socket 생성
-        // client_addr_info : client의 local_address(ip + port)정보가 들어옴
         SocketAddress client_addr_info;
         TCPSocketPtr session_socket = tcp_socket->Accept(client_addr_info);
         if (session_socket == nullptr)
